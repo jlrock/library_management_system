@@ -1,1 +1,11 @@
-build
+# VS Code
+*.vscode/
+
+# Logs
+*.log
+
+# C
+*.o
+*.exe
+build/
+bin/
