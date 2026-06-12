@@ -7,7 +7,7 @@ typedef struct Reserva{
 }Reserva;
 
 typedef struct NoFila{
-    Reserva * reserva;
+    Reserva reserva;
     struct NoFila* proximo;
 }NoFila;
 
@@ -18,11 +18,11 @@ typedef struct Fila{
 
 Fila* criarFila();
 
-void enfileirarReserva(Fila* fila, Reserva* reserva);
+void enfileirarReserva(Fila* fila, Reserva reserva);
 
 Reserva desenfileirarReserva(Fila* fila);
 
-int FilaVazia(Fila* fila);
+int filaVazia(Fila* fila);
 
 void exibirReservas(Fila* fila);
 

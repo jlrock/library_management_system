@@ -5,7 +5,6 @@
 *.log
 
 # C
-*.o
-*.exe
+output/
 build/
 bin/
