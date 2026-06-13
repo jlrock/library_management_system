@@ -1,14 +1,14 @@
 #ifndef LIVRO_H
 #define LIVRO_H
 
-typedef struct Livro{
+typedef struct {
     int codigo;
     char titulo[100];
     char autor[100];
     int ano;
     int quantidadeTotal;
     int quantidadeDisponivel;
-};
+} Livro;
 
 Livro* criarLivro(int codigo, char titulo[], char autor[], int ano, int quantidadeTotal);
 
