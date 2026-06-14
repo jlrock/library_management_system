@@ -170,14 +170,13 @@ void salvarLivros(Arvore *arvore, const char *nomeArquivo) {
 }
 
 Arvore* carregarLivros(const char *nomeArquivo) {
+    Arvore *arvore = criarArvore();
+
     FILE *arquivo = fopen(nomeArquivo, "r");
 
     if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo.\n");
-        return NULL;
+        return arvore;
     }
-
-    Arvore *arvore = criarArvore();
 
     int codigo;
     char titulo[100];
