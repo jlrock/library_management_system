@@ -13,10 +13,14 @@ typedef struct Arvore{
 } Arvore;
 
 Arvore* criarArvore();
+NoArvore* criarNoArvore();
 
 void inserirLivroArvore(Arvore* arvore, Livro* livro);
+NoArvore* inserirLivroNoArvore(NoArvore* no, Livro* livro);
 
 Livro* buscarLivroArvore(Arvore * arvore, int codigo);
+
+Livro* buscarLivroNoArvore(NoArvore * arvore, int codigo);
 
 void listarLivrosEmOrdem(Arvore * arvore);
 
@@ -27,5 +31,18 @@ void listarLivrosPosOrdem(Arvore * arvore);
 int contarLivros(Arvore* arvore);
 
 int calcularAlturaArvore(Arvore* arvore);
+
+void salvarLivrosRec(FILE *arquivo, NoArvore *no);
+
+void salvarLivros(Arvore *arvore, const char *nomeArquivo);
+
+void listarLivrosEmOrdemNoArvore(NoArvore * no);
+void listarLivrosPreOrdemNoArvore(NoArvore * no);
+void listarLivrosPosOrdemNoArvore(NoArvore * no);
+int contarLivrosNoArvore(NoArvore* no);
+int calcularAlturaNoArvore(NoArvore* no);
+
+Arvore* carregarLivros(const char *nomeArquivo);
+
 
 #endif
