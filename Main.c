@@ -129,6 +129,7 @@ int main(){
     } while (opcao != 'q');
     
     salvarLivros(arvore, livros_file);
+    limparArvore(arvore);
 
     return 0;
 }

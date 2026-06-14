@@ -214,3 +214,20 @@ Arvore* carregarLivros(const char *nomeArquivo) {
 
     return arvore;
 }
+
+void limparArvore(Arvore* arvore){
+    limparNoArvore(arvore->raiz);
+    free(arvore);
+}
+
+void limparNoArvore(NoArvore* no) {
+    if (no == NULL) {
+        return;
+    }
+
+    limparNoArvore(no->esquerda);
+    limparNoArvore(no->direita);
+    
+    free(no->livro);
+    free(no);
+}
