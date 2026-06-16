@@ -1,27 +1,29 @@
 #ifndef LISTA_H
 #define LISTA_H
 
-typedef struct Emprestimo{
+typedef struct {
     char nomeUsuario[100];
     int codigoLivro;
     char tituloLivro[100];
-}Emprestimo;
+} Emprestimo;
 
-typedef struct NoLista{
+typedef struct NoLista {
     Emprestimo emprestimo;
-    struct NoLista * proximo;
-}NoLista;
+    struct NoLista *prox;
+} NoLista;
 
-typedef struct Lista{
-    NoLista * inicio;
-}Lista ;
+typedef struct {
+    NoLista *inicio;
+} Lista;
 
-Lista * criarLista();
+Lista *criarLista();
 
-void inserirEmprestimo(Lista* lista, Emprestimo* emprestimo);
+void inserirEmprestimo(Lista *l, Emprestimo e);
 
-void listarEmprestimo(Lista* lista);
+void listarEmprestimos(Lista *l);
 
-int ListaVazia(Lista* lista);
+int listaVazia(Lista *l);
+
+void freeLista(Lista *l);
 
 #endif
