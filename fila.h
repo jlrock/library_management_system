@@ -1,29 +1,39 @@
 #ifndef FILA_H
 #define FILA_H
-
-typedef struct Reserva{
+typedef struct {
     char nomeUsuario[100];
     int codigoLivro;
-}Reserva;
+} Reserva;
 
-typedef struct NoFila{
-    Reserva reserva;
+typedef struct NoFila {
+
+    Reserva* reserva;
+
     struct NoFila* proximo;
-}NoFila;
 
-typedef struct Fila{
+} NoFila;
+
+typedef struct {
+
     NoFila* inicio;
     NoFila* fim;
-}Fila;
+
+} Fila;
 
 Fila* criarFila();
 
-void enfileirarReserva(Fila* fila, Reserva reserva);
-
-Reserva desenfileirarReserva(Fila* fila);
+Reserva* criarReserva(char nome[], int codigo);
 
 int filaVazia(Fila* fila);
 
+void enfileirarReserva(Fila* fila, Reserva* reserva);
+
+Reserva* desenfileirarReserva(Fila* fila);
+
 void exibirReservas(Fila* fila);
+
+Fila *carregarReservas(const char *nomeArquivo);
+
+void salvarReservas(Fila *fila, const char *nomeArquivo);
 
 #endif

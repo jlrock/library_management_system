@@ -41,6 +41,8 @@ void listarLivrosPreOrdemNoArvore(NoArvore * no);
 void listarLivrosPosOrdemNoArvore(NoArvore * no);
 int contarLivrosNoArvore(NoArvore* no);
 int calcularAlturaNoArvore(NoArvore* no);
+void limparArvore(Arvore * arvore);
+void limparNoArvore(NoArvore *no);
 
 Arvore* carregarLivros(const char *nomeArquivo);
 

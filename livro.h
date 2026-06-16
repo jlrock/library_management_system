@@ -1,3 +1,5 @@
+#include "lista.h"
+
 #ifndef LIVRO_H
 #define LIVRO_H
 
@@ -18,7 +20,7 @@ int obterCodigoLivro(Livro* livro);
 
 int obterQuantidadeDisponivel(Livro* livro);
 
-void emprestarExemplar(Livro* livro);
+Emprestimo *emprestarExemplar(Livro* livro, char nome[]);
 
 void devolverExemplar(Livro* livro);
 

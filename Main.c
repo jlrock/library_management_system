@@ -6,12 +6,16 @@
 #include "Fila.c"
 //importar as outras estruturas quando forem criadas
 char livros_file[] = "livros.txt";
+char emprestimos_file[] = "emprestimos.txt";
+char reservas_file[] = "reservas.txt";
 
 int main(){
     /*instanciar Arvore e Lista quando estiverem prontas 
     (talvez a Fila, pois ela só será utilizada caso aja reservas)*/
     Arvore* arvore = carregarLivros(livros_file);
-    listarLivrosEmOrdem(arvore);
+    Lista * lista = carregarEmprestimos(emprestimos_file);
+    Fila * fila = carregarReservas(reservas_file);
+
     char opcao;
     printf("\n//============SISTEMA DE GERENCIAMENTO DE BIBLIOTECA============//\n");
     printf("Bem vindo(a) ao nosso sistema de gerenciamento de biblioteca! Escolha entre as opcoes do menu abaixo:\n");
@@ -97,14 +101,47 @@ int main(){
             case 'e':
                 listarLivrosPosOrdem(arvore);
                 break;
-            case 'f':
-                printf("Acao F\n");
+            case 'f': {
+                printf("Emprestimo de Livro\n");
+                char nome[100];
+                printf("Insira o nome do usuario: ");
+                gets(nome);
+                int codigo;
+                printf("Insira o codigo do livro: ");
+                scanf("%d", &codigo);
+                getchar();
+                Livro * l = buscarLivroArvore(arvore, codigo);
+                if (l == NULL) {
+                    printf("Livro nao encontrado\n");
+                    break;
+                }
+                Emprestimo *e = emprestarExemplar(l, nome);
+                if (e == NULL) {
+                    printf("Nao ha exemplares disponiveis\n");
+                    int opt;
+                    printf("Digite 1 para fazer uma reserva ou qualquer outro numero para nao fazer: ");
+                    scanf("%d", &opt);
+                    getchar();
+                    if (opt == 1) {
+                        Reserva *r = criarReserva(nome, codigo);
+                        enfileirarReserva(fila, r);
+                        printf("Uma reserva foi criada\n");
+                    } else {
+                        printf("Reserva não criada\n");
+                    }
+                    break;
+                }
+                inserirEmprestimo(lista, e);
+                printf("Livro emprestado com succeso\n");
                 break;
-            case 'g':
-                printf("Acao G\n");
+            }
+            case 'g': {
+                printf("Devolucao de Livro\n");
+
                 break;
+            }
             case 'h':
-                printf("Acao H\n");
+                exibirReservas(fila);
                 break;
             case 'i':
                 printf("Acao I\n");
@@ -113,9 +150,8 @@ int main(){
                 printf("Acao J\n");
                 break;
             case 'k':
-                printf("Acao K\n");
+                printf("Altura da arvore: %d\n", calcularAlturaArvore(arvore));
                 break;
-        
             case 'q':
                 printf("Obrigado, ate logo! Saindo...\n");
                 break;
@@ -128,6 +164,10 @@ int main(){
         getchar();
     } while (opcao != 'q');
     
+    salvarReservas(fila, reservas_file);
+    freeFila(fila);
+    salvarEmprestimos(lista, emprestimos_file);
+    freeLista(lista);
     salvarLivros(arvore, livros_file);
     limparArvore(arvore);
 

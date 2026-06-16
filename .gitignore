@@ -8,3 +8,6 @@
 output/
 build/
 bin/
+
+biblioteca.exe
+*.txt

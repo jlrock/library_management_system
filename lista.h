@@ -8,8 +8,11 @@ typedef struct {
 } Emprestimo;
 
 typedef struct NoLista {
-    Emprestimo emprestimo;
+
+    Emprestimo *emprestimo;
+
     struct NoLista *prox;
+
 } NoLista;
 
 typedef struct {
@@ -18,12 +21,36 @@ typedef struct {
 
 Lista *criarLista();
 
-void inserirEmprestimo(Lista *l, Emprestimo e);
+Emprestimo *criarEmprestimo(
+    char nome[],
+    int codigo,
+    char titulo[]
+);
 
-void listarEmprestimos(Lista *l);
+NoLista *encontrarNo(
+    Lista *l,
+    int index
+);
 
-int listaVazia(Lista *l);
+void inserirEmprestimo(
+    Lista *l,
+    Emprestimo *e
+);
 
-void freeLista(Lista *l);
+void listarEmprestimos(
+    Lista *l
+);
+
+int listaVazia(
+    Lista *l
+);
+
+void freeLista(
+    Lista *l
+);
+
+Lista *carregarEmprestimos(const char *nomeArquivo);
+void salvarEmprestimos(Lista *lista, const char *nomeArquivo);
+
 
 #endif
