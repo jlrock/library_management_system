@@ -103,9 +103,6 @@ int main(){
                 break;
             case 'f': {
                 printf("Emprestimo de Livro\n");
-                char nome[100];
-                printf("Insira o nome do usuario: ");
-                gets(nome);
                 int codigo;
                 printf("Insira o codigo do livro: ");
                 scanf("%d", &codigo);
@@ -115,6 +112,9 @@ int main(){
                     printf("Livro nao encontrado\n");
                     break;
                 }
+                char nome[100];
+                printf("Insira o nome do usuario: ");
+                gets(nome);
                 Emprestimo *e = emprestarExemplar(l, nome);
                 if (e == NULL) {
                     printf("Nao ha exemplares disponiveis\n");
@@ -137,17 +137,32 @@ int main(){
             }
             case 'g': {
                 printf("Devolucao de Livro\n");
-
+                int codigo;
+                printf("Digite o codigo do livro: ");
+                scanf("%d", &codigo);
+                getchar();
+                Livro *l = buscarLivroArvore(arvore, codigo);
+                if (l == NULL) {
+                    printf("Livro nao encontrado\n");
+                    break;
+                }
+                devolverExemplar(l);
+                if (fila->inicio->reserva->codigoLivro == codigo) {
+                    Reserva *r = desenfileirarReserva(fila);
+                    Emprestimo *e = emprestarExemplar(l, r->nomeUsuario);
+                    inserirEmprestimo(lista, e);
+                    printf("Livro emprestado em decorreencia de reserva\n");
+                }
                 break;
             }
             case 'h':
                 exibirReservas(fila);
                 break;
             case 'i':
-                printf("Acao I\n");
+                listarEmprestimos(lista);
                 break;
             case 'j':
-                printf("Acao J\n");
+                printf("Quaantidade de livros cadastrados: %d\n", contarLivros(arvore));
                 break;
             case 'k':
                 printf("Altura da arvore: %d\n", calcularAlturaArvore(arvore));

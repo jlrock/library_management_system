@@ -49,5 +49,11 @@ Emprestimo *emprestarExemplar(Livro* livro, char nome[]){
 }
 
 void devolverExemplar(Livro* livro){
-    livro->quantidadeDisponivel++;
+    if (livro->quantidadeDisponivel < livro->quantidadeTotal) {
+        livro->quantidadeDisponivel++;
+        printf("Devolucao efetuada\n");
+    }
+    else {
+        printf("Nao exite emprestimo corrente desse livro\n");
+    }
 }
