@@ -7,11 +7,6 @@
 #include "Lista.h"
 #include "Fila.h"
 
-#include "Fila.c"
-#include "arvore.c"
-#include "lista.c"
-#include "livro.c"
-
 char livros_file[] = "livros.txt";
 char emprestimos_file[] = "emprestimos.txt";
 char reservas_file[] = "reservas.txt";
