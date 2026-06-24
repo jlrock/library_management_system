@@ -2,7 +2,10 @@ cmake_minimum_required(VERSION 3.10)
 
 project(LinkedListProject C)
 
-add_executable(LinkedList_tests
-    LinkedList_tests.c
-    LinkedList.c
+add_executable(main
+    main.c
+    fila.c
+    lista.c
+    livro.c
+    arvore.c
 )

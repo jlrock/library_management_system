@@ -1,2 +1,13 @@
-.vscode/
+# VS Code
+*.vscode/
+
+# Logs
+*.log
+
+# C
 output/
+build/
+bin/
+
+biblioteca.exe
+*.txt
