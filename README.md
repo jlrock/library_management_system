@@ -90,5 +90,4 @@ Pressione [ENTER] para continuar.
 - Liberação adequada de memória antes de encerrar o sistema.
 
 ## Limitações conhecidas:
-- O sistema utiliza uma única fila de reservas para todos os livros existentes, logo, mesmo que o livro que uma pessoa deseja já esteja disponível, ela só poderá realizar o empréstimo quando for a primeira da fila; 
-- O código completo do trabalho está na branch "feature/menu" e não na padrão "main".
+- O sistema utiliza uma única fila de reservas para todos os livros existentes, logo, mesmo que o livro que uma pessoa deseja já esteja disponível, ela só poderá realizar o empréstimo quando for a primeira da fila;
